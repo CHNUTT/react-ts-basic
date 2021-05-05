@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 // import GuestList from './state/GuestList';
 import UserSearch from './state/UserSearch';
+import EventComponent from './events/Event.component';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       {/* <h1>Hi there!</h1> */}
       {/* <GuestList /> */}
       <UserSearch />
+      <EventComponent />
     </div>
   );
 };
