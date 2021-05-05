@@ -2,6 +2,13 @@ import { useState } from 'react';
 
 const GuestList: React.FC = () => {
   const [name, setName] = useState('');
+  const [guests, setGuests] = useState<string[]>([]);
+
+  const handleClick = () => {
+    setGuests([...guests, name]);
+    setName('');
+  };
+
   return (
     <div>
       <h3>GuestList</h3>
@@ -12,7 +19,7 @@ const GuestList: React.FC = () => {
           setName(e.target.value);
         }}
       />
-      <button>Add Guest</button>
+      <button onClick={handleClick}>Add Guest</button>
     </div>
   );
 };
