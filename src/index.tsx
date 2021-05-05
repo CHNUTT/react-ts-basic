@@ -9,7 +9,7 @@ const App = () => {
       {/* <h1>Hi there!</h1> */}
       {/* <GuestList /> */}
       <UserSearch />
-      <EventComponent />
+      {/* <EventComponent /> */}
     </div>
   );
 };
