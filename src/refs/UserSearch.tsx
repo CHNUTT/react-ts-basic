@@ -1,45 +1,51 @@
 import { useState, useRef, useEffect } from 'react';
 
 type User = {
-  name: string;
-  age: number;
+	name: string;
+	age: number;
 };
 
 const users = [
-  { name: 'Sarah', age: 20 },
-  { name: 'Alex', age: 20 },
-  { name: 'Michael', age: 20 },
+	{ name: 'Sarah', age: 20 },
+	{ name: 'Alex', age: 20 },
+	{ name: 'Michael', age: 20 },
 ];
 
 const UserSearch: React.FC = () => {
-  const [name, setName] = useState('');
-  const [foundUser, setFoundUser] = useState<User | undefined>();
-  const inputRef = useRef<HTMLInputElement | null>(null);
+	const [name, setName] = useState('');
+	const [foundUser, setFoundUser] = useState<User | undefined>();
+	const inputRef = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    inputRef.current && inputRef.current.focus();
-  }, []);
+	// guard
+	// useEffect(() => {
+	// 	if (!inputRef.current) return;
+	// 	inputRef.current.focus();
+	// }, []);
 
-  const handleClick = () => {
-    const foundUser = users.find((user) => user.name === name);
-    setFoundUser(foundUser);
-  };
+	useEffect(() => {
+		inputRef.current && inputRef.current.focus();
+	}, []);
 
-  return (
-    <div>
-      <label htmlFor='user-search'>User Search</label>
-      <input
-        ref={inputRef}
-        type='text'
-        id='user-search'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <button onClick={handleClick}>Find User</button>
+	const handleClick = () => {
+		const foundUser = users.find((user) => user.name === name);
+		setFoundUser(foundUser);
+	};
 
-      <div>{foundUser && `${foundUser.name}, ${foundUser.age}`}</div>
-    </div>
-  );
+	return (
+		<div>
+			<label htmlFor='user-search'>User Search</label>
+			<input
+				ref={inputRef}
+				type='text'
+				id='user-search'
+				value={name}
+				onChange={(e) => setName(e.target.value)}
+			/>
+			<button onClick={handleClick}>Find User</button>
+
+			<div>{foundUser && `${foundUser.name}, ${foundUser.age}`}</div>
+		</div>
+	);
 };
 
 export default UserSearch;
